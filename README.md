@@ -7,16 +7,7 @@
 - iterate through data and display exchange rate by country
 
 **SOLUTION NOTES**
-- Information contained in **J**ava**S**cript **O**bject **N**otation format, and has to be converted into a dictionary in Python so that it is accessible
-```python
-import json
-
-def openjson(filename):
-    # open jsonfile in read format and return dictionary
-    with open(filename, "r") as jsonfile:
-        dict_from_json = json.load(jsonfile)
-    return dict_from_json
-```
+- Information contained in **J**ava**S**cript **O**bject **N**otation format
  
 ```json
 {
@@ -31,4 +22,37 @@ def openjson(filename):
       "ZAR": 15.2
     }
   }
+```
+- Has to be converted into a dictionary in Python so that it is accessible
+```python
+import json
+
+def openjson(filename):
+    # open jsonfile in read format and return dictionary
+    with open(filename, "r") as jsonfile:
+        dict_from_json = json.load(jsonfile)
+    return dict_from_json
+```
+
+- To access ``exchange_rates.json``, must declare the correct filename to the ``openjson()`` function.
+- Converting to dictionary ``exchange_dict = openjson(filename)``, reveals 3 keys: ``base``, ``date``, ``rates``
+    - ``rates`` has a value of another dictionary, which contains all of the information regarding exchange rates for other countries.
+    - After assigning that to a new variable ``exchange_rates = exchange_dict["rates"]`` can iterate through each item and print.
+  
+```python
+def main():
+    filename = "exchange_rates.json"
+    # use openjson() to extract exchange_rates info from json file
+    exchange_dict = openjson(filename)
+    
+    # contains 3 items: base currency, date, and exchange_rates (dict)
+    base_currency = exchange_dict["base"]
+    exchange_rates = exchange_dict["rates"]
+    
+    # iterate through each exchange rate and print
+    for country, rate in exchange_rates.items():
+        print(f"\nCOUNTRY: {country}, RATE: {rate}")
+
+
+
 ```

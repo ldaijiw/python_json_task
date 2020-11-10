@@ -1,6 +1,5 @@
 import json
 
-filename = "exchange_rates.json"
 
 def openjson(filename):
     # open jsonfile in read format and return dictionary
@@ -9,6 +8,7 @@ def openjson(filename):
     return dict_from_json
 
 def main():
+    filename = "exchange_rates.json"
     # use openjson() to extract exchange_rates info from json file
     exchange_dict = openjson(filename)
     
