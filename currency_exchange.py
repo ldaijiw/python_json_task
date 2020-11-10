@@ -9,8 +9,10 @@ def openjson(filename):
     return dict_from_json
 
 def main():
+    # use openjson() to extract exchange_rates info from json file
     exchange_dict = openjson(filename)
     
+    # contains 3 items: base currency, date, and exchange_rates (dict)
     base_currency = exchange_dict["base"]
     exchange_rates = exchange_dict["rates"]
     
