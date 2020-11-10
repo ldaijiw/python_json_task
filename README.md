@@ -52,7 +52,4 @@ def main():
     # iterate through each exchange rate and print
     for country, rate in exchange_rates.items():
         print(f"\nCOUNTRY: {country}, RATE: {rate}")
-
-
-
 ```
